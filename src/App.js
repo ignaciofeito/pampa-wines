@@ -5,8 +5,9 @@ import Buttons from './components/Buttons/Buttons'
 const App = props => {
 
   return <>
+
     <NavBar />
-    <Buttons />
+    
   </>
 }
 
