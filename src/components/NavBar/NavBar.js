@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { CartWidget } from '../CartWidget/CartWidget'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +39,7 @@ export default function SearchAppBar() {
       <AppBar position="static">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Boutique de guitarras
           </Typography>
           <div>
             <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
@@ -57,8 +58,9 @@ export default function SearchAppBar() {
               <MenuItem onClick={handleClose}>Batería</MenuItem>
               <MenuItem onClick={handleClose}>Amplificadores</MenuItem>
             </Menu>
-          </div>
 
+          </div>
+          <div><CartWidget /></div>
         </Toolbar>
       </AppBar>
     </div>
