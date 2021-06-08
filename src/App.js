@@ -7,7 +7,7 @@ const App = props => {
   return <>
 
     <NavBar />
-    <ItemListContainer />
+    <ItemListContainer greeting="Hola! Estamos trabajando para traer los mejores instrumentos para vos" />
   </>
 }
 
