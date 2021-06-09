@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  appBar: {
+    backgroundColor: 'black',
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -22,6 +25,13 @@ const useStyles = makeStyles((theme) => ({
       display: 'block',
     },
   },
+  button: {
+    color: 'white',
+    marginRight: '20px',
+    fontFamily: 'Helvetica Neue, sans-serif',
+    fontWeight: '500',
+    letterSpacing: '0.2px'
+  }
 }));
 
 export default function SearchAppBar() {
@@ -36,15 +46,15 @@ export default function SearchAppBar() {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.appBar} position="static">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
             Boutique de guitarras
           </Typography>
           <div>
             <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-              Categorías
-      </Button>
+              <span className={classes.button}>Categorías</span>
+            </Button>
             <Menu
               id="simple-menu"
               anchorEl={anchorEl}

@@ -1,13 +1,14 @@
 import './App.css';
 import NavBar from './components/NavBar/NavBar'
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer'
+import { ItemCount } from './components/ItemCount/ItemCount'
 
 const App = props => {
 
   return <>
 
     <NavBar />
-    <ItemListContainer greeting="Hola! Estamos trabajando para traer los mejores instrumentos para vos" />
+    <ItemCount stock="5" initial="1" />
   </>
 }
 
