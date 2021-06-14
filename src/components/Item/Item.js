@@ -5,6 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import { ItemCount } from './ItemCount/ItemCount'
 
 const useStyles = makeStyles({
     root: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
     },
 });
 
-export const Item = ({ name, productImg, price}) => {
+export const Item = ({ name, productImg, price, stock }) => {
     const classes = useStyles();
 
     return (
@@ -33,6 +34,7 @@ export const Item = ({ name, productImg, price}) => {
                         USD {price}
                     </Typography>
                 </CardContent>
+                <ItemCount stock={stock} initial={0}/>
             </CardActionArea>
         </Card>
     );
