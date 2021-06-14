@@ -1,6 +1,5 @@
 export const ItemListContainerStyle = theme => {
     return({
-        row: {display: 'flex',}, 
         text:{
             color: 'black',
             'font-family': 'Montserrat, sans-serif',
