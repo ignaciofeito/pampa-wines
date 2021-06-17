@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export const ItemList = ({dataToShow}) => {
+export const ItemList = ({ dataToShow }) => {
 
     const classes = useStyles();
 
