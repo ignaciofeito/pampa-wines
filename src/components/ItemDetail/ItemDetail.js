@@ -1,40 +1,29 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import { ItemCount } from '../ItemCount/ItemCount'
+import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 345,
+        flexGrow: 1,
     },
-    media: {
-        height: 400,
-    },
-});
+}));
 
-export const ItemDetail = ({item}) => {
+export const ItemDetail = ({ item }) => {
 
     const classes = useStyles();
-    
-    return <Card className={classes.root}>
-        <CardActionArea>
-            <CardMedia
-                className={classes.media}
-                image={item.productImg}
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {item.name}
-                </Typography>
-                <Typography gutterBottom variant="h6" component="h2">
-                    USD {item.price}
-                </Typography>
-            </CardContent>
-            <ItemCount stock={item.stock} initial={0}/>
-        </CardActionArea>
-    </Card>
+
+    return <>
+        {item.length === 0 ? (<h1>Cargando...</h1>) : (<div className={classes.root}>
+            <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                    <img alt={item.name} src={item.productImg}></img>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <div><h1>{item.name}</h1></div>
+                    <div><h2>{item.price}</h2></div>
+                    <div><p>{item.description}</p></div>
+                </Grid>
+            </Grid>
+        </div>)}
+    </>
 }
