@@ -9,10 +9,13 @@ import { ItemCount } from '../ItemCount/ItemCount'
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 345,
+        minHeight: 430,
+        maxWidth: 280,
     },
     media: {
-        height: 400,
+        maxWidth: "50%",
+        margin: "auto",
+        height: 250,
     },
 });
 
@@ -27,11 +30,11 @@ export const Item = ({ name, productImg, price, stock }) => {
                     image={productImg}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom>
                         {name}
                     </Typography>
-                    <Typography gutterBottom variant="h6" component="h2">
-                        USD {price}
+                    <Typography gutterBottom>
+                        $ {price}
                     </Typography>
                 </CardContent>
                 <ItemCount stock={stock} initial={0}/>

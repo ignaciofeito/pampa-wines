@@ -1,13 +1,11 @@
 import './App.css';
+import { Ruteo } from './Ruteo/Ruteo'
 import NavBar from './components/NavBar/NavBar'
-import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer'
 
 const App = props => {
 
   return <>
-
-    <NavBar />
-    <ItemDetailContainer />
+    <Ruteo />
   </>
 }
 
