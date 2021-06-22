@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { ItemListContainerStyle } from './ItemListContainerStyle'
 import { ItemList } from '../ItemList/ItemList'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { products } from '../../products'
 
 const useStyles = makeStyles((theme) => ItemListContainerStyle(theme))
@@ -21,22 +21,18 @@ export const ItemListContainer = () => {
     console.log(categoryId)
     const [dataToShow, setDataToShow] = useState([]);
 
-    const ejecutar = () => {
-        if (categoryId !== undefined) {
-            promiseData().then(data => {
-                const dataFiltrada = data.filter(element => element.categoryId === categoryId)
-                setDataToShow(dataFiltrada)
-            })
-        } else {
-            promiseData().then(data => {
-                setDataToShow(data)
-            })
-        }
-    }
-
     useEffect(() => {
-        ejecutar();
-    }, [])
+        promiseData().then((data) => {
+            if (categoryId !== undefined) {
+                const dataFiltrada = data.filter(
+                    (element) => element.categoryId === categoryId
+                );
+                setDataToShow(dataFiltrada);
+            } else {
+                setDataToShow(data);
+            }
+        });
+    }, [categoryId]);
 
     const classes = useStyles()
 

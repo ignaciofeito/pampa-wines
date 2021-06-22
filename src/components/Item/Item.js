@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { ItemCount } from '../ItemCount/ItemCount'
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles({
     root: {
@@ -17,28 +18,34 @@ const useStyles = makeStyles({
         margin: "auto",
         height: 250,
     },
+    link: {
+        textDecoration: 'none',
+        color: 'black',
+    }
 });
 
-export const Item = ({ name, productImg, price, stock }) => {
+export const Item = ({ id, name, productImg, price, stock }) => {
     const classes = useStyles();
 
     return (
         <Card className={classes.root}>
             <CardActionArea>
-                <CardMedia
-                    className={classes.media}
-                    image={productImg}
-                />
-                <CardContent>
-                    <Typography gutterBottom>
-                        {name}
-                    </Typography>
-                    <Typography gutterBottom>
-                        $ {price}
-                    </Typography>
-                </CardContent>
-                <ItemCount stock={stock} initial={0}/>
+                <Link className={classes.link} to={`/item/${id}`}>
+                    <CardMedia
+                        className={classes.media}
+                        image={productImg}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom>
+                            {name}
+                        </Typography>
+                        <Typography gutterBottom>
+                            $ {price}
+                        </Typography>
+                    </CardContent></Link>
             </CardActionArea>
+            <ItemCount stock={stock} initial={0} />
+
         </Card>
     );
 }

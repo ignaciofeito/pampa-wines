@@ -20,7 +20,7 @@ export const ItemList = ({ dataToShow }) => {
             <h4>Mostrando {dataToShow.length} productos</h4>
             <Grid container spacing={3}>
 
-                {dataToShow.map((element) => <Grid key={element.id} item xs={12} sm={3}><Link to={`/item/${element.id}`}><Item id={element.id} name={element.name} price={element.price} stock={element.stock} productImg={element.productImg} /></Link></Grid>)}
+                {dataToShow.map((element) => <Grid key={element.id} item xs={12} sm={3}><Item id={element.id} name={element.name} price={element.price} stock={element.stock} productImg={element.productImg} /></Grid>)}
 
             </Grid>
         </div>)}
