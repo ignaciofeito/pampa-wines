@@ -6,7 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
-import { AddToCart } from '../AddToCart/AddToCart';
 
 const useStyles = makeStyles({
     root: {
@@ -44,7 +43,6 @@ export const Item = ({ id, name, productImg, price, stock }) => {
                         </Typography>
                     </CardContent></Link>
             </CardActionArea>
-            <AddToCart />
         </Card>
     );
 }
