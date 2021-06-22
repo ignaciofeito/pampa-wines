@@ -18,7 +18,7 @@ export default function NavBar() {
       <AppBar className={classes.appBar} position="static">
         <Grid container className={classes.container}>
           <Grid xs={12} sm={8}>
-            <Link to={'/'}><img src={logo} alt="PAMPA WINES" className={classes.logo} /></Link>
+            <Link to={'/pampa-wines'}><img src={logo} alt="PAMPA WINES" className={classes.logo} /></Link>
           </Grid>
           <Grid xs={12} sm={4}>
             <div>
