@@ -23,9 +23,9 @@ export default function NavBar() {
           <Grid xs={12} sm={4}>
             <div>
               <ul className={classes.navbar}>
-                <li className={classes.button}><NavLink className={classes.link} to={`/category/malbec`}>MALBEC</NavLink></li>
-                <li className={classes.button}><NavLink className={classes.link} to={`/category/cabernet`}>CABERNET SAUVIGNON</NavLink></li>
-                <li className={classes.button}><NavLink className={classes.link} to={`/category/syrah`}>SYRAH</NavLink></li>
+                <li className={classes.button}><NavLink className={classes.link} to={`/pampa-wines/category/malbec`}>MALBEC</NavLink></li>
+                <li className={classes.button}><NavLink className={classes.link} to={`/pampa-wines/category/cabernet`}>CABERNET SAUVIGNON</NavLink></li>
+                <li className={classes.button}><NavLink className={classes.link} to={`/pampa-wines/category/syrah`}>SYRAH</NavLink></li>
                 <li className={classes.button}><CartWidget /></li>
               </ul>
             </div>

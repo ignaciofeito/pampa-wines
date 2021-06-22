@@ -8,13 +8,13 @@ export const Ruteo = () => {
     return <BrowserRouter>
         <NavBar />
         <Switch>
-            <Route exact path="/">
+            <Route exact path="/pampa-wines">
                 <ItemListContainer />
             </Route>
-            <Route path='/category/:categoryId'>
+            <Route path='/pampa-wines/category/:categoryId'>
                 <ItemListContainer />
             </Route>
-            <Route path='/item/:ID'>
+            <Route path='/pampa-wines/item/:ID'>
                 <ItemDetailContainer />
             </Route>
         </Switch>
