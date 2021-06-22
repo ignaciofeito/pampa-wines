@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pampa-wines/static/css/main.2eccf1ab.chunk.css",
-    "main.js": "/pampa-wines/static/js/main.08549656.chunk.js",
-    "main.js.map": "/pampa-wines/static/js/main.08549656.chunk.js.map",
+    "main.js": "/pampa-wines/static/js/main.264f7690.chunk.js",
+    "main.js.map": "/pampa-wines/static/js/main.264f7690.chunk.js.map",
     "runtime-main.js": "/pampa-wines/static/js/runtime-main.d93062df.js",
     "runtime-main.js.map": "/pampa-wines/static/js/runtime-main.d93062df.js.map",
     "static/js/2.c1a46e6b.chunk.js": "/pampa-wines/static/js/2.c1a46e6b.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d93062df.js",
     "static/js/2.c1a46e6b.chunk.js",
     "static/css/main.2eccf1ab.chunk.css",
-    "static/js/main.08549656.chunk.js"
+    "static/js/main.264f7690.chunk.js"
   ]
 }
