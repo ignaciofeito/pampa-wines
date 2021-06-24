@@ -15,6 +15,17 @@ export const ItemDetailStyle = theme => {
         },
         info: {
             padding: "10%",
+        },
+        button:{
+            backgroundColor: 'lightgray',
+            padding: '2%',
+            margin: 'auto',
+            maxHeight: '40px',
+        },
+        contenedor: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
         }
     })
 }
