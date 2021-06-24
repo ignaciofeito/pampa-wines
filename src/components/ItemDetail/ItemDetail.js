@@ -1,27 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { ItemDetailStyle } from './ItemDetailStyle';
 import { ItemCount } from '../ItemCount/ItemCount';
 import { AddToCart } from '../AddToCart/AddToCart';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        marginTop: '2%',
-        flexGrow: 1,
-        boxShadow: '20px 10px 30px gray',
-        border: '1px solid lightgray',
-        borderRadius: '15px',
-    },
-    image: {
-        padding: '10%',
-        width: "50%",
-        marginTop: "30px",
-        marginLeft: "20%",
-    },
-    info: {
-        padding: "10%",
-    }
-}));
+const useStyles = makeStyles((theme) => ItemDetailStyle(theme))
 
 export const ItemDetail = ({ dataToShow }) => {
 
@@ -39,7 +23,8 @@ export const ItemDetail = ({ dataToShow }) => {
                         <hr></hr>
                         <div><h2>$ {dataToShow[0].price}</h2></div>
                         <div><ItemCount stock={dataToShow[0].stock} initial={0} /></div>
-                        <div><AddToCart data={dataToShow[0]} /></div>
+                        <div><AddToCart /></div>
+
                         <div><h3>Descripción:</h3><p>{dataToShow[0].description}</p></div>
                     </div>
                 </Grid>

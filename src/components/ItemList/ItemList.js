@@ -2,13 +2,9 @@ import React from 'react';
 import { Item } from '../Item/Item';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { Link } from 'react-router-dom'
+import {ItemListStyle} from './ItemListStyle';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-}));
+const useStyles = makeStyles((theme) => ItemListStyle(theme));
 
 
 export const ItemList = ({ dataToShow }) => {

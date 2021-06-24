@@ -9,6 +9,6 @@ export const CartWidget = () => {
     const classes = useStyles()
 
     return <>
-        <a className={classes.cartIcon} href="#"><i className={classes.cartIcon} class="fas fa-shopping-cart"></i></a>
+        <a className={classes.cartIcon} href="/pampa-wines/cart"><i className={classes.cartIcon} class="fas fa-shopping-cart"></i></a>
     </>
 }

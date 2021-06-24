@@ -9,7 +9,12 @@ export const AddToCart = (data) => {
 
     const classes = useStyles();
 
-    return <div className={classes.contenedor}><Button className={classes.button}>
-        <h4>Añadir al carrito</h4>
-    </Button></div>
+    const onAdd = () => {
+        ;
+    }
+
+    return <div className={classes.contenedor}>
+        <Button className={classes.button}>
+            <h4>Añadir al carrito</h4>
+        </Button></div>
 }

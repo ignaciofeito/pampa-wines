@@ -19,8 +19,8 @@ export function ItemCount(props) {
     }
 
     return <div className={classes.contenedor}>
-        <Button disabled={count === 0} onClick={e => subtract()} className={classes.button}>-</Button>
+        <Button disabled={count === 0} onClick={subtract} className={classes.button}>-</Button>
         <h3>{count}</h3>
-        <Button disabled={count === props.stock} onClick={e => add()} className={classes.button}>+</Button>
+        <Button disabled={count === props.stock} onClick={add} className={classes.button}>+</Button>
     </div>
 }
