@@ -1,7 +1,7 @@
 export const ItemStyle = theme => {
     return ({
         root: {
-            minHeight: 430,
+            minHeight: 380,
             maxWidth: 280,
         },
         media: {

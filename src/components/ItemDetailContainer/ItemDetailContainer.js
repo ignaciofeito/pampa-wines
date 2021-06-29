@@ -15,7 +15,7 @@ const promiseData = () => {
 export const ItemDetailContainer = () => {
 
     const { ID } = useParams();
-    const [dataToShow, setDataToShow] = useState([]);
+    const [dataToShow, setDataToShow] = useState();
 
     const ejecutar = () => {
         promiseData().then(data => {

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { ItemDetailStyle } from './ItemDetailStyle';
 import { ItemCount } from '../ItemCount/ItemCount';
+import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom'
+import { CartContext } from '../../context/CartContext/CartContext'
 
 const useStyles = makeStyles((theme) => ItemDetailStyle(theme))
 
@@ -14,7 +15,10 @@ export const ItemDetail = ({ dataToShow }) => {
 
     const [clicked, setClicked] = useState(false);
 
-    function end() {
+    const [cart, setCart] = useContext(CartContext);
+
+    const addItem = (element) =>{
+        setCart([...cart, element]);
         setClicked(true);
     }
 
@@ -23,7 +27,7 @@ export const ItemDetail = ({ dataToShow }) => {
     }
 
     return <>
-        {dataToShow.length === 0 ? (<h1>Cargando...</h1>) : (<div className={classes.root}>
+        {dataToShow === undefined ? (<h1>Cargando...</h1>) : (<div className={classes.root}>
             <Grid container spacing={3}>
                 <Grid xs={12} sm={6}>
                     <img className={classes.image} alt={dataToShow[0].name} src={dataToShow[0].productImg}></img>
@@ -35,15 +39,15 @@ export const ItemDetail = ({ dataToShow }) => {
                         <div><h2>$ {dataToShow[0].price}</h2></div>
                         <div>{clicked ? null : <ItemCount stock={dataToShow[0].stock} initial={0} />}</div>
                         <div>{clicked ? null : <div className={classes.contenedor}>
-                            <Button onClick={end} className={classes.button}>
+                            <Button onClick={()=>addItem(dataToShow[0])} className={classes.button}>
                                 <h4>Añadir al carrito</h4>
                             </Button></div>}
                         </div>
                         <div>
                             <div className={classes.contenedor}>
-                                {clicked ? <Link to="/pampa-wines/cart"><Button className={classes.button}>
-                                    <h4>Finalizar compra</h4>
-                                </Button></Link> : null}
+                                {clicked ? <Link to="/cart" className={classes.button}>
+                                    <h4>FINALIZAR COMPRA</h4>
+                                </Link> : null}
                             </div>
                             <div className={classes.contenedor}>
                                 {clicked ? <Button onClick={cancel} className={classes.button}>

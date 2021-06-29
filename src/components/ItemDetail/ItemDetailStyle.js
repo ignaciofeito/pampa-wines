@@ -3,10 +3,7 @@ export const ItemDetailStyle = theme => {
         root: {
             marginTop: '2%',
             flexGrow: 1,
-            boxShadow: '20px 10px 30px gray',
-            border: '1px solid lightgray',
-            borderRadius: '15px',
-        },
+            },
         image: {
             padding: '10%',
             width: "50%",
@@ -18,8 +15,11 @@ export const ItemDetailStyle = theme => {
         },
         button:{
             backgroundColor: 'lightgray',
+            textDecoration: 'none',
+            color: 'black',
             padding: '2%',
             margin: 'auto',
+            marginBottom: '2%',
             maxHeight: '40px',
         },
         contenedor: {

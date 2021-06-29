@@ -3,20 +3,27 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ItemListContainer } from '../components/ItemListContainer/ItemListContainer'
 import { ItemDetailContainer } from '../components/ItemDetailContainer/ItemDetailContainer'
 import NavBar from '../components/NavBar/NavBar'
+import { CartProvider } from '../context/CartContext/CartContext'
+import { Cart } from '../components/Cart/Cart'
 
 export const Ruteo = () => {
-    return <BrowserRouter>
-        <NavBar />
-        <Switch>
-            <Route exact path="/pampa-wines">
-                <ItemListContainer />
-            </Route>
-            <Route path='/pampa-wines/category/:categoryId'>
-                <ItemListContainer />
-            </Route>
-            <Route path='/pampa-wines/item/:ID'>
-                <ItemDetailContainer />
-            </Route>
-        </Switch>
-    </BrowserRouter>
+    return <CartProvider>
+        <BrowserRouter>
+            <NavBar />
+            <Switch>
+                <Route exact path="/">
+                    <ItemListContainer />
+                </Route>
+                <Route path='/category/:categoryId'>
+                    <ItemListContainer />
+                </Route>
+                <Route path='/item/:ID'>
+                    <ItemDetailContainer />
+                </Route>
+                <Route path='/cart'>
+                    <Cart />
+                </Route>
+            </Switch>
+        </BrowserRouter>
+    </CartProvider>
 }

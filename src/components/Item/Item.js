@@ -16,7 +16,7 @@ export const Item = ({ id, name, productImg, price, stock }) => {
     return (
         <Card className={classes.root}>
             <CardActionArea>
-                <Link className={classes.link} to={`/pampa-wines/item/${id}`}>
+                <Link className={classes.link} to={`/item/${id}`}>
                     <CardMedia
                         className={classes.media}
                         image={productImg}
