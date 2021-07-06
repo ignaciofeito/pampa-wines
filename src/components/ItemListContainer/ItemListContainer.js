@@ -4,34 +4,46 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ItemListContainerStyle } from './ItemListContainerStyle'
 import { ItemList } from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
-import { products } from '../../products'
+import { getFirestore } from '../../Firebase/firebase'
 
 const useStyles = makeStyles((theme) => ItemListContainerStyle(theme))
-
-const promiseData = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(
-            products), 1000);
-    })
-}
 
 export const ItemListContainer = () => {
 
     const { categoryId } = useParams();
-    console.log(categoryId)
+
     const [dataToShow, setDataToShow] = useState([]);
 
     useEffect(() => {
-        promiseData().then((data) => {
-            if (categoryId !== undefined) {
-                const dataFiltrada = data.filter(
-                    (element) => element.categoryId === categoryId
-                );
-                setDataToShow(dataFiltrada);
-            } else {
-                setDataToShow(data);
-            }
-        });
+        const db = getFirestore();
+        const itemCollection = db.collection("productos");
+        
+        // En caso de que la ruta no tenga ningún categoryId, se renderizan todos los productos de itemCollection
+        if (categoryId !== undefined) {
+            var dataFiltrada = itemCollection.where('categoryId', '==', categoryId)
+
+            dataFiltrada.get().then((response) => {
+                if (response.size === 0) {
+                    console.log("no results");
+                }
+
+                const aux = response.docs.map(element => {
+                    return { ...element.data(), id: element.id };
+                })
+                setDataToShow(aux)
+            })
+        } else {
+            itemCollection.get().then((response) => {
+                if (response.size === 0) {
+                    console.log("no results");
+                }
+
+                const aux = response.docs.map(element => {
+                    return { ...element.data(), id: element.id };
+                })
+                setDataToShow(aux)
+            })
+        }
     }, [categoryId]);
 
     const classes = useStyles()

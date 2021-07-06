@@ -2,31 +2,25 @@ import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import { ItemDetail } from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom'
-import { products } from '../../products'
-
-const promiseData = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(
-            products), 1000);
-    })
-}
-
+import { getFirestore } from '../../Firebase/firebase'
 
 export const ItemDetailContainer = () => {
 
     const { ID } = useParams();
     const [dataToShow, setDataToShow] = useState();
 
-    const ejecutar = () => {
-        promiseData().then(data => {
-            const dataFiltrada = data.filter(element => element.id == ID)
-            setDataToShow(dataFiltrada)
-        })
-    }
-
     useEffect(() => {
-        ejecutar();
-    }, [])
+        const db = getFirestore();
+        const itemCollection = db.collection("productos");
+        const item = itemCollection.doc(ID)
+
+        item.get().then((doc) => {
+            if (!doc.exists) {
+                console.log("no results");
+            }
+            setDataToShow({ id: doc.id, ...doc.data() })
+        })
+    }, [ID]);
 
     return <>
         <Container>
