@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
 import { CartStyle } from './CartStyle'
 
@@ -28,6 +28,7 @@ export const Cart = () => {
                     <h1>Carrito</h1>
                     {list == '' ? <div>
                         <h2>El carrito está vacío</h2>
+                        <Link to={'/'}><h3>Volver al inicio</h3></Link>
                     </div> :
                         <>
                             <table className={classes.table}>
