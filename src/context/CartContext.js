@@ -30,8 +30,12 @@ export const CartProvider = props => {
     setList(array);
   };
 
+  const totalItems = () => {
+    return list.reduce((acumulador, item) => acumulador + item.count, 0);
+  }
+  const items = totalItems();
   return (
-    <CartContext.Provider value={{ list, productsAdd, productsRemove }}>
+    <CartContext.Provider value={{ list, productsAdd, productsRemove, items }}>
       {props.children}
     </CartContext.Provider>
   );
