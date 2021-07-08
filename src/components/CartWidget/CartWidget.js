@@ -13,13 +13,13 @@ export const CartWidget = () => {
 
     const classes = useStyles()
 
-    const { items } = useContext(CartContext);
+    const { totalItemCount } = useContext(CartContext);
     
     return <>
         <Link className={classes.cartIcon} to="/cart">
 
             <IconButton color="inherit">
-                <Badge badgeContent={items} color="secondary">
+                <Badge badgeContent={totalItemCount} color="secondary">
                     <ShoppingCartIcon />
                 </Badge>
             </IconButton>
