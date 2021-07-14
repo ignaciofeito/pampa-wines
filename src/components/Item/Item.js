@@ -14,9 +14,9 @@ export const Item = ({ id, name, productImg, price, stock }) => {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
-            <CardActionArea>
-                <Link className={classes.link} to={`/item/${id}`}>
+        <Link className={classes.link} to={`/item/${id}`}>
+            <Card className={classes.root}>
+                <CardActionArea>
                     <CardMedia
                         className={classes.media}
                         image={productImg}
@@ -28,8 +28,9 @@ export const Item = ({ id, name, productImg, price, stock }) => {
                         <Typography gutterBottom>
                             $ {price}
                         </Typography>
-                    </CardContent></Link>
-            </CardActionArea>
-        </Card>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+        </Link>
     );
 }

@@ -34,9 +34,9 @@ export const CartProvider = props => {
     return list.reduce((acumulador, item) => acumulador + item.count, 0);
   }
   const totalItemCount = resumeItem();
-  
+
   const resumePrice = () => {
-    return list.reduce ((acumulador, item) => acumulador + (item.count*item.price), 0);
+    return list.reduce((acumulador, item) => acumulador + (item.count * item.price), 0);
   }
   const totalItemPrice = resumePrice();
 
