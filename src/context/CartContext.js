@@ -40,8 +40,12 @@ export const CartProvider = props => {
   }
   const totalItemPrice = resumePrice();
 
+  const resetCart = () => {
+    return setList([]);
+  }
+
   return (
-    <CartContext.Provider value={{ list, productsAdd, productsRemove, totalItemCount, totalItemPrice }}>
+    <CartContext.Provider value={{ list, productsAdd, productsRemove, totalItemCount, totalItemPrice, resetCart }}>
       {props.children}
     </CartContext.Provider>
   );

@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
 import firebase from 'firebase/app'
 import 'firebase/firestore'
-import { CartContext } from '../context/CartContext'
 
 const app = firebase.initializeApp(
   {
@@ -19,25 +17,4 @@ export const getFirebase = () => {
 
 export const getFirestore = () => {
   return firebase.firestore();
-}
-
-export const BuyCart = ( name, email, phone, list ) => {
-  
-  const dataBase = getFirestore();
-  const orders = dataBase.collection('orders');
-
-  const newOrder = {
-    fecha: firebase.firestore.Timestamp.fromDate(new Date()),
-    nombre: name,
-    mail: email,
-    telefono: phone,
-    productos: list,
-  };
-  orders.add(newOrder).then(({id}) =>{
-    console.log(id);
-  }).catch(err =>{
-    console.log(err);
-  }).finally(() =>{
-    console.log("end");
-  });
 }
