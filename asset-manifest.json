@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/pampa-wines/static/css/main.2eccf1ab.chunk.css",
-    "main.js": "/pampa-wines/static/js/main.361058db.chunk.js",
-    "main.js.map": "/pampa-wines/static/js/main.361058db.chunk.js.map",
+    "main.js": "/pampa-wines/static/js/main.b1933050.chunk.js",
+    "main.js.map": "/pampa-wines/static/js/main.b1933050.chunk.js.map",
     "runtime-main.js": "/pampa-wines/static/js/runtime-main.baf0e27f.js",
     "runtime-main.js.map": "/pampa-wines/static/js/runtime-main.baf0e27f.js.map",
-    "static/js/2.7a00f929.chunk.js": "/pampa-wines/static/js/2.7a00f929.chunk.js",
-    "static/js/2.7a00f929.chunk.js.map": "/pampa-wines/static/js/2.7a00f929.chunk.js.map",
+    "static/js/2.df215e5e.chunk.js": "/pampa-wines/static/js/2.df215e5e.chunk.js",
+    "static/js/2.df215e5e.chunk.js.map": "/pampa-wines/static/js/2.df215e5e.chunk.js.map",
     "static/js/3.8dfff40e.chunk.js": "/pampa-wines/static/js/3.8dfff40e.chunk.js",
     "static/js/3.8dfff40e.chunk.js.map": "/pampa-wines/static/js/3.8dfff40e.chunk.js.map",
     "index.html": "/pampa-wines/index.html",
     "static/css/main.2eccf1ab.chunk.css.map": "/pampa-wines/static/css/main.2eccf1ab.chunk.css.map",
-    "static/js/2.7a00f929.chunk.js.LICENSE.txt": "/pampa-wines/static/js/2.7a00f929.chunk.js.LICENSE.txt"
+    "static/js/2.df215e5e.chunk.js.LICENSE.txt": "/pampa-wines/static/js/2.df215e5e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.baf0e27f.js",
-    "static/js/2.7a00f929.chunk.js",
+    "static/js/2.df215e5e.chunk.js",
     "static/css/main.2eccf1ab.chunk.css",
-    "static/js/main.361058db.chunk.js"
+    "static/js/main.b1933050.chunk.js"
   ]
 }
