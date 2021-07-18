@@ -44,8 +44,20 @@ export const CartProvider = props => {
     return setList([]);
   }
 
+  const [logued, setLogued] = useState(false);
+  const [usermail, setUsermail] = useState('');
+  const [username, setUsername] = useState('');
+  const [userphone, setUserphone] = useState('');
+
+  const changeLogued = (email, name, phone, boolean) => {
+    setUsermail(email);
+    setUsername(name);
+    setUserphone(phone);
+    setLogued(boolean);
+  }
+
   return (
-    <CartContext.Provider value={{ list, productsAdd, productsRemove, totalItemCount, totalItemPrice, resetCart }}>
+    <CartContext.Provider value={{ list, productsAdd, productsRemove, totalItemCount, totalItemPrice, resetCart, logued, changeLogued, username, usermail, userphone }}>
       {props.children}
     </CartContext.Provider>
   );

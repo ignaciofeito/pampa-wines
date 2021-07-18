@@ -15,6 +15,7 @@ export const ItemDetail = ({ dataToShow }) => {
     const [clicked, setClicked] = useState(false);
     const [count, setCount] = useState(1);
     const { productsAdd } = useContext(CartContext);
+    const { productsRemove } = useContext(CartContext);
 
     const add = () => {
         setCount(count + 1);
@@ -25,15 +26,16 @@ export const ItemDetail = ({ dataToShow }) => {
     }
 
     const addItem = () => {
-        setClicked(true);
-    }
-
-    const end = () => {
         productsAdd({ id: dataToShow.id, name: dataToShow.name, productImg: dataToShow.productImg, price:dataToShow.price, stock: dataToShow.stock,count });
         setClicked(true);
     }
 
+    const end = () => {
+        setClicked(true);
+    }
+
     function cancel() {
+        productsRemove({id:dataToShow.id})
         setClicked(false);
     }
 
@@ -56,14 +58,19 @@ export const ItemDetail = ({ dataToShow }) => {
                         </div>
                         <div>
                             <div className={classes.contenedor}>
-                                {clicked ? <Link to="/cart" onClick={end} className={classes.button}>
+                                {clicked ? <Link to={"/cart"}><Button onClick={end} className={classes.button}>
                                     <h4>FINALIZAR COMPRA</h4>
-                                </Link> : null}
+                                </Button></Link> : null}
                             </div>
                             <div className={classes.contenedor}>
                                 {clicked ? <Button onClick={cancel} className={classes.button}>
                                     <h4>Cancelar</h4>
                                 </Button> : null}
+                            </div>
+                            <div className={classes.contenedor}>
+                                {clicked ? <Link to={"/"}>
+                                    <h3>Seguir comprando</h3>
+                                </Link> : null}
                             </div>
                         </div>
 

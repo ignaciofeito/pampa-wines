@@ -9,6 +9,7 @@ import { CartContext } from '../../context/CartContext'
 import { CartStyle } from './CartStyle'
 import { getFirestore } from '../../Firebase/firebase';
 import firebase from 'firebase/app'
+import { Auth } from '../../Firebase/Auth'
 
 const useStyles = makeStyles((theme) => CartStyle(theme))
 
@@ -16,31 +17,33 @@ export const Cart = () => {
 
     const classes = useStyles()
 
-    const { list, setList } = useContext(CartContext);
+    const { logued } = useContext(CartContext);
+    const { username } = useContext(CartContext);
+    const { usermail } = useContext(CartContext);
+    const { userphone } = useContext(CartContext);
+
+    const { list } = useContext(CartContext);
     const { productsRemove } = useContext(CartContext);
     const { totalItemPrice } = useContext(CartContext);
     const { resetCart } = useContext(CartContext);
 
     const [orderId, setOrderId] = useState("")
 
-    const [inputName, setInputName] = useState("")
-    const [inputEmail, setInputEmail] = useState("")
-    const [inputPhone, setInputPhone] = useState("")
-
     const remove = (removeId) => {
         productsRemove(removeId);
     }
 
-    const handleSubmit = (evt) => {
+    const dataBase = getFirestore();
+
+    const submitOrder = (evt) => {
         evt.preventDefault();
-        const dataBase = getFirestore();
         const orders = dataBase.collection('orders');
 
         const newOrder = {
             fecha: firebase.firestore.Timestamp.fromDate(new Date()),
-            nombre: inputName,
-            mail: inputEmail,
-            telefono: inputPhone,
+            nombre: username,
+            mail: usermail,
+            telefono: userphone,
             productos: list,
         };
         orders.add(newOrder).then(({ id }) => {
@@ -53,19 +56,18 @@ export const Cart = () => {
         });
     }
 
-
     if (orderId == '') {
         return <>
             <Container>
                 <Grid container spacing={3}>
-                    <Grid xs={12} m={12} sm={12}>
+                    <Grid item xs={12} m={12} sm={12}>
                         <h1>Carrito</h1>
                         {list == '' ? <div>
                             <h2>El carrito está vacío</h2>
                             <Link to={'/'}><h3>Volver al inicio</h3></Link>
                         </div> :
                             <Grid container spacing={3}>
-                                <Grid xs={12} m={12} sm={6}>
+                                <Grid item xs={12} m={12} sm={8}>
                                     <div className={classes.tableContainer}>
                                         <table className={classes.table}>
 
@@ -82,37 +84,17 @@ export const Cart = () => {
                                         <h2>Total: $ {totalItemPrice}</h2>
                                     </div>
                                 </Grid>
-                                <Grid xs={12} m={5} sm={6}>
+                                <Grid item xs={12} m={5} sm={4} className={classes.form}>
                                     <h1>Finalizar compra</h1>
-                                    <form className={classes.root} noValidate autoComplete="off">
-                                        <div><TextField
-                                            required
-                                            value={inputName}
-                                            onChange={e => setInputName(e.target.value)}
-                                            id="inputName"
-                                            label="Nombre"
-                                            variant="outlined"
-                                        />
-                                            <TextField
-                                                required
-                                                value={inputEmail}
-                                                onChange={e => setInputEmail(e.target.value)}
-                                                id="inputEmail"
-                                                label="Email"
-                                                variant="outlined"
-                                            />
-                                            <TextField
-                                                required
-                                                value={inputPhone}
-                                                onChange={e => setInputPhone(e.target.value)}
-                                                id="inputPhone"
-                                                label="Teléfono"
-                                                variant="outlined"
-                                            /></div>
-                                        <div>
-                                            <Button onClick={handleSubmit} type="submit" className={classes.btnBuy}>Comprar</Button>
-                                        </div>
-                                    </form>
+                                    {logued ?
+                                        <form className={classes.root} noValidate autoComplete="off">
+                                        <h4>Comprando como {username}</h4>
+                                            
+                                            <div>
+                                                <Button onClick={submitOrder} type="submit" className={classes.btnBuy}>Comprar</Button>
+                                            </div>
+                                        </form> : <Auth />
+                                    }
                                 </Grid>
                             </Grid>
                         }

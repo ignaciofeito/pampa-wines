@@ -14,7 +14,10 @@ export const Ruteo = () => {
                 <Route exact path="/">
                     <ItemListContainer />
                 </Route>
-                <Route path='/category/:categoryId'>
+                <Route path='/category/:categoryId/:subcategoryId'>
+                    <ItemListContainer />
+                </Route>
+                <Route exact path='/category/:categoryId'>
                     <ItemListContainer />
                 </Route>
                 <Route path='/item/:ID'>

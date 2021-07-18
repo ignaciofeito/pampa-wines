@@ -6,7 +6,7 @@ export const ItemDetailStyle = theme => {
             },
         image: {
             padding: '10%',
-            width: "50%",
+            width: "40%",
             marginTop: "30px",
             marginLeft: "20%",
         },
@@ -17,9 +17,7 @@ export const ItemDetailStyle = theme => {
             backgroundColor: 'lightgray',
             textDecoration: 'none',
             color: 'black',
-            padding: '2%',
-            margin: 'auto',
-            marginBottom: '2%',
+            margin: '0% 3% 2% 3%',
             maxHeight: '40px',
         },
         contenedor: {

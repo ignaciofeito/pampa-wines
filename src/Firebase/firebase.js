@@ -18,3 +18,18 @@ export const getFirebase = () => {
 export const getFirestore = () => {
   return firebase.firestore();
 }
+
+/* const subir = () => {
+  const dataBase = getFirestore();
+  const products = dataBase.collection('productos');
+
+  const newProducts = [];
+  newProducts.forEach(p => products.add(p).then(({ id }) => {
+    console.log(id);
+  }).catch(err => {
+    console.log(err);
+  }).finally(() => {
+    console.log("end");
+  }))
+}
+subir(); */

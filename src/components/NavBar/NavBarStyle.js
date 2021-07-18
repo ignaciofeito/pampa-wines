@@ -5,6 +5,7 @@ export const NavBarStyle = theme => {
         },
         appBar: {
             backgroundColor: 'white',
+            minHeight: '90px',
         },
         button: {
             color: 'black',
