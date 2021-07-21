@@ -5,7 +5,7 @@ export const ItemStyle = theme => {
             maxWidth: 280,
         },
         media: {
-            maxWidth: "50%",
+            maxWidth: "70%",
             margin: "auto",
             height: 250,
         },

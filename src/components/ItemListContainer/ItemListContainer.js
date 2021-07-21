@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
-import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom'
 import InputBase from '@material-ui/core/InputBase';
 import { makeStyles } from '@material-ui/core/styles';
 import { ItemListContainerStyle } from './ItemListContainerStyle'
@@ -88,7 +88,9 @@ export const ItemListContainer = () => {
 
     return <Container>
         <Grid container columns={16}>
-            <Grid xs={12} m={12} sm={9}></Grid>
+            <Grid xs={12} m={12} sm={9}>
+                <h4><Link className={classes.title} to={"/"}>PRODUCTOS</Link>{categoryId? <> / <Link className={classes.title} to={"/category/"+categoryId}>{categoryId.toUpperCase()}</Link></>:null}{subcategoryId?<> / <Link className={classes.title} to={"/category/"+categoryId+"/"+subcategoryId}>{subcategoryId.toUpperCase()}</Link></>:null}</h4>
+            </Grid>
             <Grid xs={12} m={12} sm={3}>
                 <div className={classes.search}>
                     <div className={classes.searchIcon}>

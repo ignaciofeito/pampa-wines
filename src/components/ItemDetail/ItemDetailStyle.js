@@ -10,6 +10,9 @@ export const ItemDetailStyle = theme => {
             marginTop: "30px",
             marginLeft: "20%",
         },
+        title: {
+            fontFamily: 'Playfair Display, serif',
+        },
         info: {
             padding: "10%",
         },
@@ -17,7 +20,7 @@ export const ItemDetailStyle = theme => {
             backgroundColor: 'lightgray',
             textDecoration: 'none',
             color: 'black',
-            margin: '0% 3% 2% 3%',
+            margin: '5%',
             maxHeight: '40px',
         },
         contenedor: {

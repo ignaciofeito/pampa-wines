@@ -1,37 +1,63 @@
 import React, { useState, useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { CartStyle } from '../components/Cart/CartStyle';
-import { CartContext } from '../context/CartContext'
+import { AuthContext } from '../context/AuthContext';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import {getFirestore} from './firebase'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
 const useStyles = makeStyles((theme) => CartStyle(theme))
 
-export const Auth = () => {
+export const Register = () => {
 
     const classes = useStyles()
 
-    const { changeLogued } = useContext(CartContext);
+    const [inputName, setInputName] = useState('')
+    const [signupEmail, setSignupEmail] = useState('')
+    const [inputPhone, setInputPhone] = useState('')
+    const [signupPass, setSignupPass] = useState('')
 
-    const [signupEmail, setSignupEmail] = useState("")
-    const [signupPass, setSignupPass] = useState("")
-    const [inputName, setInputName] = useState("")
-    const [inputPhone, setInputPhone] = useState("")
+    const auth = firebase.auth()
+
+    const { changeLogged } = useContext(AuthContext);
 
     const SignupUser = (evt) => {
         evt.preventDefault();
 
-        const auth = firebase.auth()
-
         auth
             .createUserWithEmailAndPassword(signupEmail, signupPass)
-            .then(changeLogued(signupEmail,inputName,inputPhone, true))
+            .then(()=>{
+                changeLogged(signupEmail, inputName, inputPhone)
+                
+                    const dataBase = getFirestore();
+                    const users = dataBase.collection('users');
+                    
+                    const newUser = {name: inputName, email: signupEmail, phone: inputPhone}
+
+                    users.add(newUser).then(({ id }) => {
+                      console.log(id);
+                    }).catch(err => {
+                      console.log(err);
+                    }).finally(() => {
+                      console.log("end");
+                    })
+                  
+            })
 
     }
 
-    return <div><h4>Inicia sesión o regístrate para finalizar tu compra</h4>
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            return <h1>Logueado</h1>
+        } else {
+            return <h2>Logueate rey</h2>
+        }
+    })
+
+    return <div><h1>Regístrate</h1>
+
         <form className={classes.root} noValidate autoComplete="off">
             <TextField
                 required

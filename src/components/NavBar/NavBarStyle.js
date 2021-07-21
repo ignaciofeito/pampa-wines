@@ -8,12 +8,17 @@ export const NavBarStyle = theme => {
             minHeight: '90px',
         },
         button: {
+            minWidth: '32px',
             color: 'black',
             textDecoration: 'none',
-            fontFamily: 'Helvetica Neue, sans-serif',
+            fontFamily: 'Playfair Display, serif',
             fontWeight: '600',
-            letterSpacing: '-0.5px',
+            fontSize: '18px',
             margin: '2%',
+        },
+        avatar: {
+            width: theme.spacing(4),
+            height: theme.spacing(4),
         },
         container: {
             display: 'flex',
@@ -29,6 +34,7 @@ export const NavBarStyle = theme => {
         link: {
             textDecoration: 'none',
             color: 'black',
+            justifyContent: 'center',
         }
     })
 }

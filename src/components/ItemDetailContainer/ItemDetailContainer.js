@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
 import { ItemDetail } from '../ItemDetail/ItemDetail';
+import { ItemDetailStyle } from '../ItemDetail/ItemDetailStyle';
 import { ItemList } from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
 import { getFirestore } from '../../Firebase/firebase'
 
+const useStyles = makeStyles((theme) => ItemDetailStyle(theme))
+
 export const ItemDetailContainer = () => {
+
+    const classes = useStyles();
 
     const { ID } = useParams();
     const [dataToShow, setDataToShow] = useState();
@@ -48,7 +54,7 @@ export const ItemDetailContainer = () => {
     return <>
         <Container>
             <ItemDetail dataToShow={dataToShow} />
-            <h2>Productos relacionados</h2>
+            <h2 className={classes.title}>Productos relacionados</h2>
             <ItemList dataToShow={relatedItems} />
         </Container>
     </>

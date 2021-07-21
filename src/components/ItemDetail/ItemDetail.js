@@ -47,7 +47,7 @@ export const ItemDetail = ({ dataToShow }) => {
                 </Grid>
                 <Grid xs={12} sm={6}>
                     <div className={classes.info}>
-                        <div><h1>{dataToShow.name}</h1></div>
+                        <div><h1 className={classes.title}>{dataToShow.name}</h1></div>
                         <hr></hr>
                         <div><h2>$ {dataToShow.price}</h2></div>
                         <div>{clicked ? null : <div className={classes.contenedor}><Button disabled={count === 0} onClick={subtract} className={classes.button}>-</Button><h3>{count}</h3><Button disabled={count === dataToShow.stock} onClick={add} className={classes.button}>+</Button></div>}</div>
@@ -74,7 +74,6 @@ export const ItemDetail = ({ dataToShow }) => {
                             </div>
                         </div>
 
-                        <div><h3>Descripción:</h3><p>{dataToShow.description}</p></div>
                     </div>
                 </Grid>
             </Grid>
