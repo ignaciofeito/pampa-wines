@@ -50,15 +50,15 @@ export default function NavBar() {
                   {list == '' ? <li className={classes.button}></li> : <li><CartWidget /></li>}
                 </ul>
               </div>
-              <Grid xs={12} sm={1}>
-                <NavLink className={classes.link} to={`/profile`}><AccountCircle className={classes.avatar} src="/broken-image.jpg" /></NavLink>
-              </Grid>
+            </Grid>
+            <Grid xs={12} sm={1}>
+              <NavLink className={classes.link} to={`/profile`}><AccountCircle className={classes.avatar} src="/broken-image.jpg" /></NavLink>
             </Grid>
           </Grid>
         </div>
         <div className={classes.listSmallScreen}>
           <Grid container className={classes.container}>
-            <Grid xs={4} sm={4}>                
+            <Grid xs={4} sm={4}>
               <IconButton edge="start" className={classes.button} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} aria-label="menu">
                 <MenuIcon />
               </IconButton>
@@ -69,17 +69,17 @@ export default function NavBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}><Link to={`/category/vinos/malbec`} className={classes.li}>Malbec</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to={`/category/vinos/cabernet`} className={classes.li}>Cabernet Sauvignon</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to={`/category/vinos/syrah`} className={classes.li}>Syrah</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to={`/category/vinos/chardonnay`} className={classes.li}>Chardonnay</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to={`/category/vinos/sauvignon-blanc`} className={classes.li}>Sauvignon Blanc</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to={`/category/vinos/torrontes`} className={classes.li}>Torrontes</Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to={`/category/espumantes/champagne`} className={classes.li}>Champagne</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to={`/category/vinos/malbec`} className={classes.link}>Malbec</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to={`/category/vinos/cabernet`} className={classes.link}>Cabernet Sauvignon</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to={`/category/vinos/syrah`} className={classes.link}>Syrah</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to={`/category/vinos/chardonnay`} className={classes.link}>Chardonnay</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to={`/category/vinos/sauvignon-blanc`} className={classes.link}>Sauvignon Blanc</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to={`/category/vinos/torrontes`} className={classes.link}>Torrontes</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to={`/category/espumantes/champagne`} className={classes.link}>Champagne</Link></MenuItem>
               </Menu>
             </Grid>
             <Grid xs={4} sm={4}>
-              <Link to={'/'}><img  className={classes.logo} src={logo} alt="PAMPA WINES" /></Link>
+              <Link to={'/'}><img className={classes.logo} src={logo} alt="PAMPA WINES" /></Link>
             </Grid>
             <Grid className={classes.container} xs={4} sm={4}>
               {list == '' ? null : <CartWidget />}

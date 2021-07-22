@@ -31,7 +31,9 @@ export const NavBarStyle = theme => {
             margin: 'auto',
         },
         logo:{
-            width: '100%',
+            [theme.breakpoints.down('xs')]: {
+                width: '100%',
+            }
         },
         navbar: {
             color: 'black',
@@ -42,6 +44,9 @@ export const NavBarStyle = theme => {
             textDecoration: 'none',
             color: 'black',
             margin: 'auto',
+            [theme.breakpoints.down('sm')]: {
+                textAlign: 'left',
+            }
         },
         listSmallScreen: {
             display: 'flex',

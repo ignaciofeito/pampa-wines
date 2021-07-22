@@ -22,10 +22,10 @@ export const Item = ({ id, name, productImg, price, stock }) => {
                         image={productImg}
                     />
                     <CardContent>
-                        <Typography gutterBottom>
+                        <Typography className={classes.cardText} gutterBottom>
                             {name}
                         </Typography>
-                        <Typography gutterBottom>
+                        <Typography className={classes.cardPrice} gutterBottom>
                             $ {price}
                         </Typography>
                     </CardContent>
