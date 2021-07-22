@@ -40,7 +40,7 @@ export default function NavBar() {
         <div className={classes.listFullScreen}>
           <Grid container className={classes.container}>
             <Grid xs={12} sm={8}>
-              <Link to={'/'}><img src={logo} alt="PAMPA WINES" /></Link>
+              <Link to={'/'}><img className={classes.logo} src={logo} alt="PAMPA WINES" /></Link>
             </Grid>
             <Grid xs={12} sm={3}>
               <div>
@@ -79,9 +79,9 @@ export default function NavBar() {
               </Menu>
             </Grid>
             <Grid xs={4} sm={4}>
-              <Link to={'/'}><img src={logo} alt="PAMPA WINES" /></Link>
+              <Link to={'/'}><img  className={classes.logo} src={logo} alt="PAMPA WINES" /></Link>
             </Grid>
-            <Grid xs={4} sm={4}>
+            <Grid className={classes.container} xs={4} sm={4}>
               {list == '' ? null : <CartWidget />}
               <NavLink className={classes.link} to={`/profile`}><AccountCircle className={classes.avatar} src="/broken-image.jpg" /></NavLink>
             </Grid>
@@ -89,6 +89,6 @@ export default function NavBar() {
         </div>
 
       </AppBar>
-    </div >
+    </div>
   );
 }

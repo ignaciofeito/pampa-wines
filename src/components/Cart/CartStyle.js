@@ -1,6 +1,6 @@
 export const CartStyle = theme => {
     return ({
-        title:{
+        title: {
             fontFamily: 'Playfair Display, serif',
         },
         root: {
@@ -22,9 +22,17 @@ export const CartStyle = theme => {
         tableContainer: {
             margin: "4%",
             padding: "2%",
+            [theme.breakpoints.down('sm')]: {
+                margin: "0%",
+                padding: "0%",
+            }
         },
         table: {
             padding: "2%",
+            [theme.breakpoints.down('sm')]: {
+                padding: "0%",
+                fontSize: '12px',
+            },
             borderRadius: '8px',
             border: '0.3px solid lightgray',
             margin: "auto",

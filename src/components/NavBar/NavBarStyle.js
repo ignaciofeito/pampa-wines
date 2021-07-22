@@ -6,6 +6,9 @@ export const NavBarStyle = theme => {
         appBar: {
             backgroundColor: 'white',
             minHeight: '90px',
+            [theme.breakpoints.down('xs')]: {
+                minHeight: '0',
+            }
         },
         button: {
             minWidth: '32px',
@@ -19,12 +22,16 @@ export const NavBarStyle = theme => {
         avatar: {
             width: theme.spacing(4),
             height: theme.spacing(4),
+            margin: 'auto',
         },
         container: {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            margin: 'auto'
+            margin: 'auto',
+        },
+        logo:{
+            width: '100%',
         },
         navbar: {
             color: 'black',
@@ -34,7 +41,7 @@ export const NavBarStyle = theme => {
         link: {
             textDecoration: 'none',
             color: 'black',
-            justifyContent: 'center',
+            margin: 'auto',
         },
         listSmallScreen: {
             display: 'flex',
