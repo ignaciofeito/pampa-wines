@@ -1,11 +1,14 @@
 export const ItemStyle = theme => {
     return ({
         root: {
-            minHeight: 380,
+            minHeight: 400,
+            [theme.breakpoints.down('sm')]: {
+                minHeight: 420,
+            },
             maxWidth: 280,
         },
         media: {
-            maxWidth: "70%",
+            maxWidth: '70%',
             margin: "auto",
             height: 250,
         },

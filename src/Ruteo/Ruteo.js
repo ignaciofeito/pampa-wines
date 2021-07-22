@@ -19,7 +19,6 @@ export const Ruteo = () => {
                 <NavBar />
                 <Switch>
                     <Route exact path="/">
-                        <Home />
                         <ItemListContainer />
                     </Route>
                     <Route path='/category/:categoryId/:subcategoryId'>

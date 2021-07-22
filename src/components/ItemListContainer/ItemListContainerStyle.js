@@ -3,10 +3,10 @@ export const ItemListContainerStyle = theme => {
     row: { display: 'flex', },
     text: {
       color: 'black',
-      'font-family': 'Montserrat, sans-serif',
-      'font-style': 'italic',
-      'font-size': '30px',
-      'margin': '15%'
+      fontFamily: 'Montserrat, sans-serif',
+      fontStyle: 'italic',
+      fontSize: '30px',
+      margin: '15%',
     },
     title: {
       textDecoration: 'none',
@@ -31,12 +31,18 @@ export const ItemListContainerStyle = theme => {
       alignItems: 'center',
       justifyContent: 'center',
       marginTop: '2%',
+      [theme.breakpoints.down('sm')]: {
+        marginTop: '0%',
+      },
     },
     inputRoot: {
       color: 'inherit',
       border: '0.3px solid lightgray',
       borderRadius: '8px',
       marginTop: '5%',
+      [theme.breakpoints.down('sm')]: {
+        marginTop: '0%',
+      },
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),

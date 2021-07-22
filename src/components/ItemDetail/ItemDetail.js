@@ -42,7 +42,7 @@ export const ItemDetail = ({ dataToShow }) => {
     return <>
         {dataToShow === undefined ? (<h1>Cargando...</h1>) : (<div className={classes.root}>
             <Grid container spacing={3}>
-                <Grid xs={12} sm={6}>
+                <Grid className={classes.imgContainer} xs={12} sm={6}>
                     <img className={classes.image} alt={dataToShow.name} src={dataToShow.productImg}></img>
                 </Grid>
                 <Grid xs={12} sm={6}>

@@ -15,10 +15,17 @@ export const ItemDetailContainer = () => {
 
     const { ID } = useParams();
     const [dataToShow, setDataToShow] = useState();
-    const [relatedItems, setRelatedItems] = useState([]);
 
     const db = getFirestore();
     const itemCollection = db.collection("productos");
+
+    /*
+    // Este state almacena los items de la misma subcategoría.
+
+    const [relatedItems, setRelatedItems] = useState([]); */
+
+    /* 
+    // Esta es la función que busca en la base de datos los elementos relacionados.
 
     const searchItems = (category) => {
         var dataFiltrada = itemCollection.where('subcategoryId', '==', category)
@@ -34,7 +41,7 @@ export const ItemDetailContainer = () => {
             setRelatedItems(aux)
         })
 
-    }
+    } */
 
     useEffect(() => {
 
@@ -45,7 +52,7 @@ export const ItemDetailContainer = () => {
                 console.log("no results");
             }
             setDataToShow({ id: doc.id, ...doc.data() });
-            searchItems(doc.data().subcategoryId);
+            // searchItems(doc.data().subcategoryId); Ejecuta la función de búsqueda de items relacionados pasando como parámetro la subcategoría.
 
         })
 
@@ -54,8 +61,8 @@ export const ItemDetailContainer = () => {
     return <>
         <Container>
             <ItemDetail dataToShow={dataToShow} />
-            <h2 className={classes.title}>Productos relacionados</h2>
-            <ItemList dataToShow={relatedItems} />
+            {/* <h2 className={classes.title}>Productos relacionados</h2> */}
+            {/* <ItemList dataToShow={relatedItems} /> Este componente despliega la lista de elementos de la misma subcategoría*/} 
         </Container>
     </>
 }

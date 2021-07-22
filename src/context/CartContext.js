@@ -24,8 +24,10 @@ export const CartProvider = props => {
   };
 
   const productsRemove = removeId => {
+    console.log(removeId);
     var array = [...list];
-    var index = array.indexOf(removeId);
+    var index = array.indexOf(array.find(e => e.id === removeId));
+    console.log(index);
     array.splice(index, 1);
     setList(array);
   };

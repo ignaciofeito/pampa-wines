@@ -35,6 +35,17 @@ export const NavBarStyle = theme => {
             textDecoration: 'none',
             color: 'black',
             justifyContent: 'center',
-        }
+        },
+        listSmallScreen: {
+            display: 'flex',
+            [theme.breakpoints.up('sm')]: {
+                display: 'none',
+            }
+        },
+        listFullScreen: {
+            [theme.breakpoints.down('xs')]: {
+                display: 'none',
+            }
+        },
     })
 }

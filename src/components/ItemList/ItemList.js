@@ -20,16 +20,10 @@ export const ItemList = ({ dataToShow }) => {
                     <Grid xs={12} sm={6} md={10}>
                         <h4 className={classes.title}>Mostrando {dataToShow.length} productos</h4>
                     </Grid>
-                    <Grid xs={12} sm={6} md={2}>
-                        <select>
-                            <option selected onSelect={() => setSorted("-")}>Menor precio</option>
-                            <option onSelect={() => setSorted("+")}>Mayor precio</option>
-                        </select>
-                    </Grid>
                 </Grid>
-                <Grid container spacing={3}>
+                <Grid container spacing={2}>
 
-                    {dataToShow.sort((a, b) => a.price > b.price).map((element) => <Grid key={element.id} item xs={12} sm={6} md={4} lg={3}><Item id={element.id} name={element.name} price={element.price} stock={element.stock} productImg={element.productImg} /></Grid>)}
+                    {dataToShow.map((element) => <Grid key={element.id} item xs={6} sm={6} md={4} lg={3}><Item id={element.id} name={element.name} price={element.price} stock={element.stock} productImg={element.productImg} /></Grid>)}
 
                 </Grid>
             </Container>

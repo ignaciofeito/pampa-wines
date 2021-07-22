@@ -1,22 +1,33 @@
 export const ItemDetailStyle = theme => {
-    return({
+    return ({
         root: {
             marginTop: '2%',
             flexGrow: 1,
-            },
+        },
+        imgContainer: {
+            display: 'flex',
+            justifyContent: 'center',
+        },
         image: {
-            padding: '10%',
             width: "40%",
-            marginTop: "30px",
-            marginLeft: "20%",
+            [theme.breakpoints.down('sm')]: {
+                marginTop: "5%",
+            },
+            [theme.breakpoints.up('sm')]: {
+                marginTop: "30px",
+                padding: '10%',
+            },
         },
         title: {
             fontFamily: 'Playfair Display, serif',
+            [theme.breakpoints.down('sm')]: {
+                fontSize: "20px",
+            },
         },
         info: {
-            padding: "10%",
+            padding: "0% 10% 10% 10%",
         },
-        button:{
+        button: {
             backgroundColor: 'lightgray',
             textDecoration: 'none',
             color: 'black',
