@@ -146,6 +146,7 @@ export const Cart = () => {
                           className={classes.btnBuy}
                           onClick={submitOrder}
                           type="submit"
+                          disabled={!inputName || !signupEmail || !inputPhone}
                         >
                           Comprar
                         </Button>
