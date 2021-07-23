@@ -52,7 +52,7 @@ export const ItemDetail = ({ dataToShow }) => {
                         <div><h2>$ {dataToShow.price}</h2></div>
                         <div>{clicked ? null : <div className={classes.contenedor}><Button disabled={count === 0} onClick={subtract} className={classes.button}>-</Button><h3>{count}</h3><Button disabled={count === dataToShow.stock} onClick={add} className={classes.button}>+</Button></div>}</div>
                         <div>{clicked ? null : <div className={classes.contenedor}>
-                            <Button onClick={addItem} className={classes.button}>
+                            <Button disabled={count === 0} onClick={addItem} className={classes.button}>
                                 <h4>Añadir al carrito</h4>
                             </Button></div>}
                         </div>

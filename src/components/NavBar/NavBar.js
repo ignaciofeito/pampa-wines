@@ -61,7 +61,7 @@ export default function NavBar() {
                     <li className={classes.button}></li>
                   ) : (
                     <li>
-                      <CartWidget />
+                      <CartWidget className="scale-in-center" />
                     </li>
                   )}
                 </ul>
@@ -157,7 +157,7 @@ export default function NavBar() {
             </Grid>
             <Grid className={classes.container} xs={4} sm={4}>
               <div>
-                <CartWidget />
+                {list == 0? null : <CartWidget />}
               </div>
               {/* Aquí va el icono para ir a /profile
               <div>

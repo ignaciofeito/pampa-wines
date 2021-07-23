@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { CartWidgetStyle } from "./CartWidgetStyle";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import './CartWidgetStyle.css'
 
 const useStyles = makeStyles((theme) => CartWidgetStyle(theme));
 
@@ -16,15 +17,15 @@ export const CartWidget = () => {
 
   return (
     <>
-      {totalItemCount == 0 ? null : (
+      
         <Link className={classes.cartIcon} to="/cart">
-          <IconButton color="inherit">
+          <IconButton className="scale-in-center" color="inherit">
             <Badge badgeContent={totalItemCount} color="secondary">
               <ShoppingCartIcon />
             </Badge>
           </IconButton>
         </Link>
-      )}
+      
     </>
   );
 };
