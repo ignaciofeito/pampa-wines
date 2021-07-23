@@ -115,6 +115,7 @@ export const Cart = () => {
                       noValidate
                       autoComplete="off"
                     >
+                    <h4>El total de su compra es de $ {totalItemPrice}</h4>
                       <div>
                         <TextField
                           required

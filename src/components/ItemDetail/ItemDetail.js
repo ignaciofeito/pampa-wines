@@ -58,7 +58,7 @@ export const ItemDetail = ({ dataToShow }) => {
                         </div>
                         <div>
                             <div className={classes.contenedor}>
-                                {clicked ? <Link to={"/cart"}><Button onClick={end} className={classes.button}>
+                                {clicked ? <Link className={classes.link} to={"/cart"}><Button onClick={end} className={classes.button}>
                                     <h4>FINALIZAR COMPRA</h4>
                                 </Button></Link> : null}
                             </div>
@@ -68,7 +68,7 @@ export const ItemDetail = ({ dataToShow }) => {
                                 </Button> : null}
                             </div>
                             <div className={classes.contenedor}>
-                                {clicked ? <Link to={"/"}>
+                                {clicked ? <Link className={classes.link} to={"/"}>
                                     <h3>Seguir comprando</h3>
                                 </Link> : null}
                             </div>

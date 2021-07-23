@@ -18,6 +18,10 @@ export const ItemDetailStyle = theme => {
                 padding: '10%',
             },
         },
+        link:{
+            textDecoration: 'none',
+            color: 'black',
+        },
         title: {
             fontFamily: 'Playfair Display, serif',
             [theme.breakpoints.down('sm')]: {
@@ -32,7 +36,7 @@ export const ItemDetailStyle = theme => {
             textDecoration: 'none',
             color: 'black',
             margin: '5%',
-            maxHeight: '40px',
+            maxHeight: '50px',
         },
         contenedor: {
             display: 'flex',
