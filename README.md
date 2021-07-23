@@ -1,4 +1,4 @@
-Pampa Wines es una tienda de vinos, creada con React.
+<h1>Pampa Wines es una tienda de vinos, creada con React.</h1>
 
 ![video](https://user-images.githubusercontent.com/75045298/126842747-88199217-4598-495c-aecd-493b0330f5fe.gif)
 
