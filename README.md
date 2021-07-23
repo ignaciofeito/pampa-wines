@@ -1,5 +1,7 @@
 Pampa Wines es una tienda de vinos, creada con React.
 
+![video](https://user-images.githubusercontent.com/75045298/126842747-88199217-4598-495c-aecd-493b0330f5fe.gif)
+
 Todos los datos están almacenados en firebase, y son llamados por "ItemListContainer", que renderiza por cada objeto del array un componente "Item" con imagen, nombre y precio del producto.
 Los vinos están clasificados en dos categorías con sus correspondientes subcategorías, cada una de ellas con su propia ruta. Al hacer clic en una categoría o subcategoría, "ItemListContainer" filtra los productos y muestra sólo los que cumplen con la misma.
 Al hacer clic en el componente "Item", renderiza "ItemDetail", que muestra las características del producto y cuenta con un ItemCount, para seleccionar cantidad, y "AddToCart" para añadir al carrito.
