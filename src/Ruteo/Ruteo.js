@@ -10,7 +10,6 @@ import { CartProvider } from '../context/CartContext'
 import { AuthProvider } from '../context/AuthContext'
 import { Cart } from '../components/Cart/Cart'
 import { Footer } from '../components/Footer/Footer'
-import { Profile } from '../components/Profile/Profile'
 
 export const Ruteo = () => {
     return <AuthProvider>
@@ -32,15 +31,6 @@ export const Ruteo = () => {
                     </Route>
                     <Route path='/cart'>
                         <Cart />
-                    </Route>
-                    <Route path='/login'>
-                        <Login />
-                    </Route>
-                    <Route path='/register'>
-                        <Register />
-                    </Route>
-                    <Route path='/profile'>
-                        <Profile />
                     </Route>
                 </Switch>
                 <Footer />

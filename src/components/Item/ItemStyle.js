@@ -19,10 +19,10 @@ export const ItemStyle = theme => {
             textDecoration: 'none',
             color: 'black',
         },
-        cardText:{
+        cardText: {
             minHeight: '70px',
             letterSpacing: '-0.2px',
-                textShadow: '0.1px 0.1px 0.5px gray',
+            textShadow: '0.1px 0.1px 0.5px gray',
             [theme.breakpoints.down('sm')]: {
                 fontSize: '16px',
                 minHeight: '70px',
@@ -30,9 +30,9 @@ export const ItemStyle = theme => {
                 textShadow: '0.1px 0.1px 0.5px gray',
             },
         },
-        cardPrice:{
-                letterSpacing: '-0.2px',
-                textShadow: '0.1px 0.1px 0.5px gray',
+        cardPrice: {
+            letterSpacing: '-0.2px',
+            textShadow: '0.1px 0.1px 0.5px gray',
             [theme.breakpoints.down('sm')]: {
                 fontSize: '15px',
                 textAlign: 'center',

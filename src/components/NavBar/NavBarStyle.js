@@ -30,7 +30,7 @@ export const NavBarStyle = theme => {
             justifyContent: 'center',
             margin: 'auto',
         },
-        logo:{
+        logo: {
             [theme.breakpoints.down('xs')]: {
                 width: '100%',
             }
