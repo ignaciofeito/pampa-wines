@@ -5,9 +5,9 @@ import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../../screens/Cart/CartContext";
 import { CartStyle } from "./CartStyle";
-import { getFirestore } from "../../Firebase/firebase";
+import { getFirestore } from "../../services/Firebase/firebase";
 import firebase from "firebase/app";
 
 const useStyles = makeStyles((theme) => CartStyle(theme));
@@ -57,14 +57,14 @@ export const Cart = () => {
       });
   };
 
-  if (orderId == "") {
+  if (orderId === "") {
     return (
       <>
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={12} m={12} sm={12}>
               <h1 className={classes.title}>Carrito</h1>
-              {list == "" ? (
+              {list.length === 0 ? (
                 <div className={classes.emptyCart}>
                   <h2 className={classes.title}>El carrito está vacío</h2>
                   <Link to={"/"}>
@@ -89,6 +89,7 @@ export const Cart = () => {
                               <img
                                 className={classes.img}
                                 src={element.productImg}
+                                alt="imagen de producto"
                               ></img>
                             </td>
                             <td>{element.name}</td>

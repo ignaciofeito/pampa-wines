@@ -1,18 +1,11 @@
 import React, { useContext } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import { CartWidget } from "../CartWidget/CartWidget";
+import { AppBar, Grid, makeStyles, IconButton, Menu, MenuItem } from "@material-ui/core";
+import { CartWidget } from "./CartWidget/CartWidget";
 import logo from "../../img/logo2.png";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import IconButton from "@material-ui/core/IconButton";
-import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { NavBarStyle } from "./NavBarStyle";
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../../screens/Cart/CartContext";
 
 const useStyles = makeStyles((theme) => NavBarStyle(theme));
 
@@ -32,13 +25,13 @@ export default function NavBar() {
   };
 
   return (
-    <div className={classes.root}>
+    <nav className={classes.root}>
       <AppBar className={classes.appBar} position="static">
         <div className={classes.listFullScreen}>
           <Grid container className={classes.container}>
             <Grid xs={12} sm={8}>
               <Link to={"/"}>
-                <img className={classes.logo} src={logo} alt="PAMPA WINES" />
+                <img className={classes.logo} src={logo} alt="logo pampa wines" />
               </Link>
             </Grid>
             <Grid xs={12} sm={4}>
@@ -57,25 +50,10 @@ export default function NavBar() {
                       ESPUMANTES
                     </NavLink>
                   </li>
-                  {list == "" ? (
-                    <li className={classes.button}></li>
-                  ) : (
-                    <li>
-                      <CartWidget className="scale-in-center" />
-                    </li>
-                  )}
+                  {list.lenght !== 0 && <li><CartWidget className="scale-in-center" /></li>}
                 </ul>
               </div>
             </Grid>
-            {/* Aquí va el icono para ir a /profile
-            <Grid xs={12} sm={1}> 
-              <NavLink className={classes.link} to={`/profile`}>
-                <AccountCircle
-                  className={classes.avatar}
-                  src="/broken-image.jpg"
-                />
-              </NavLink>
-            </Grid> */}
           </Grid>
         </div>
         <div className={classes.listSmallScreen}>
@@ -152,26 +130,17 @@ export default function NavBar() {
             </Grid>
             <Grid xs={4} sm={4}>
               <Link to={"/"}>
-                <img className={classes.logo} src={logo} alt="PAMPA WINES" />
+                <img className={classes.logo} src={logo} alt="logo pampa wines" />
               </Link>
             </Grid>
             <Grid className={classes.container} xs={4} sm={4}>
               <div>
-                {list == 0? null : <CartWidget />}
+                {list.lenght === 0? null : <CartWidget />}
               </div>
-              {/* Aquí va el icono para ir a /profile
-              <div>
-                <NavLink className={classes.link} to={`/profile`}>
-                  <AccountCircle
-                    className={classes.avatar}
-                    src="/broken-image.jpg"
-                  />
-                </NavLink>
-              </div> */}
             </Grid>
           </Grid>
         </div>
       </AppBar>
-    </div>
+    </nav>
   );
 }

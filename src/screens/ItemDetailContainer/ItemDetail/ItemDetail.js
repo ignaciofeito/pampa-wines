@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { ItemDetailStyle } from './ItemDetailStyle';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import { CartContext } from '../../context/CartContext'
+import { CartContext } from '../../../screens/Cart/CartContext'
 
 const useStyles = makeStyles((theme) => ItemDetailStyle(theme))
 

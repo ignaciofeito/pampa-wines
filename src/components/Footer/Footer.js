@@ -11,12 +11,10 @@ export const Footer = () => {
 
     const classes = useStyles();
 
-    return <>
-        <div className={classes.root}>
+    return <footer className={classes.root}>
             <Grid container spacing={3}>
                 <Link to={'/'}><img src={logo} alt="PAMPA WINES" className={classes.logo} /></Link>
                 <h4 className={classes.title}>Copyright 2021 - Ignacio Feito</h4>
             </Grid>
-        </div>
-    </>
+        </footer>
 }

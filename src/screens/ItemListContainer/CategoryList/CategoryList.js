@@ -9,8 +9,7 @@ export const CategoryList = () => {
 
     const classes = useStyles();
 
-    return <>
-        <div>
+    return <div>
             <div className={classes.listFullScreen}>
             <h2 className={classes.title}>Categorías</h2>
                 <ul className={classes.list}>
@@ -32,5 +31,4 @@ export const CategoryList = () => {
                 </ul>
             </div>
         </div>
-    </>
 }
