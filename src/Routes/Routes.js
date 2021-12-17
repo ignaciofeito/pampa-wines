@@ -1,29 +1,25 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ItemListContainer } from "../screens/ItemListContainer/ItemListContainer";
 import { ItemDetailContainer } from "../screens/ItemDetailContainer/ItemDetailContainer";
 import { Cart } from "../screens/Cart/Cart";
 import Footer from "../components/Footer/Footer";
 
-export const Routes = () => {
+export const Router = () => {
   return (
-    <Switch>
-      <Route exact path="/">
-        <ItemListContainer />
-      </Route>
-      <Route path="/category/:categoryId/:subcategoryId">
-        <ItemListContainer />
-      </Route>
-      <Route exact path="/category/:categoryId">
-        <ItemListContainer />
-      </Route>
-      <Route path="/item/:ID">
-        <ItemDetailContainer />
-      </Route>
-      <Route path="/cart">
-        <Cart />
-      </Route>
-      <Footer />
-    </Switch>
+      <Routes>
+        <Route path="/" element={<ItemListContainer />} />
+        <Route
+        exact
+        path="/category/:categoryId"
+        element={<ItemListContainer />}
+      />
+        <Route
+        path="category/:categoryId/:subcategoryId"
+        element={<ItemListContainer />}
+      />
+      <Route path="/item/:ID" element={<ItemDetailContainer />} />
+      <Route path="/cart" element={<Cart />} />
+      </Routes>
   );
 };

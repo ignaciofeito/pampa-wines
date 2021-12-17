@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useCartContext } from "./CartContext";
 import { CartStyle } from "./CartStyle";
 import { getFirestore } from "../../services/Firebase/firebase";
-import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
 
 const useStyles = makeStyles((theme) => CartStyle(theme));
 
