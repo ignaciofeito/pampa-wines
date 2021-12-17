@@ -18,10 +18,11 @@ export const CartStyle = (theme) => {
       textAlign: "center",
     },
     img: {
-      width: "60%",
+      maxWidth: "30%",
       margin: "auto",
     },
     tableContainer: {
+      minWidth: "80%",
       margin: "2%",
       padding: "2%",
       [theme.breakpoints.down("sm")]: {
@@ -40,6 +41,9 @@ export const CartStyle = (theme) => {
       margin: "auto",
       textAlign: "center",
     },
+    price:{
+      minWidth: "100px",
+    },
     btnBuy: {
       backgroundColor: "lightgray",
       textDecoration: "none",
@@ -57,5 +61,8 @@ export const CartStyle = (theme) => {
       color: "darkred",
       fontWeight: "bold",
     },
+    successfulOrderContainer: {
+      textAlign: "center",
+    }
   };
 };

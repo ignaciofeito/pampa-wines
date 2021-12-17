@@ -29,12 +29,12 @@ export default function NavBar() {
       <AppBar className={classes.appBar} position="static">
         <div className={classes.listFullScreen}>
           <Grid container className={classes.container}>
-            <Grid xs={12} sm={8}>
+            <Grid item xs={12} sm={8}>
               <Link to={"/"}>
                 <img className={classes.logo} src={logo} alt="logo pampa wines" />
               </Link>
             </Grid>
-            <Grid xs={12} sm={4}>
+            <Grid item xs={12} sm={4}>
               <div>
                 <ul className={classes.navbar}>
                   <li className={classes.button}>
@@ -58,7 +58,7 @@ export default function NavBar() {
         </div>
         <div className={classes.listSmallScreen}>
           <Grid container className={classes.container}>
-            <Grid xs={4} sm={4}>
+            <Grid item xs={4} sm={4}>
               <IconButton
                 edge="start"
                 className={classes.button}
@@ -128,12 +128,12 @@ export default function NavBar() {
                 </MenuItem>
               </Menu>
             </Grid>
-            <Grid xs={4} sm={4}>
+            <Grid item xs={4} sm={4}>
               <Link to={"/"}>
                 <img className={classes.logo} src={logo} alt="logo pampa wines" />
               </Link>
             </Grid>
-            <Grid className={classes.container} xs={4} sm={4}>
+            <Grid className={classes.container} item xs={4} sm={4}>
               <div>
                 {list.lenght === 0? null : <CartWidget />}
               </div>

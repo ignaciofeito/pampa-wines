@@ -1,59 +1,53 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../screens/Cart/CartContext";
+import { useCartContext } from "./CartContext";
 import { CartStyle } from "./CartStyle";
 import { getFirestore } from "../../services/Firebase/firebase";
 import firebase from "firebase/app";
 
 const useStyles = makeStyles((theme) => CartStyle(theme));
 
+const dataBase = getFirestore();
+
 export const Cart = () => {
   const classes = useStyles();
 
   const [inputName, setInputName] = useState("");
-  const [signupEmail, setSignupEmail] = useState("");
+  const [inputEmail, setInputEmail] = useState("");
   const [inputPhone, setInputPhone] = useState("");
 
-  const { list } = useContext(CartContext);
-  const { productsRemove } = useContext(CartContext);
-  const { totalItemPrice } = useContext(CartContext);
-  const { resetCart } = useContext(CartContext);
+  const cartContext = useCartContext();
 
   const [orderId, setOrderId] = useState("");
 
   const remove = (removeId) => {
-    productsRemove(removeId);
+    cartContext.productsRemove(removeId);
   };
 
-  const dataBase = getFirestore();
-
-  const submitOrder = (evt) => {
-    evt.preventDefault();
+  const submitOrder = (e) => {
+    e.preventDefault();
 
     const orders = dataBase.collection("orders");
     const newOrder = {
-      fecha: firebase.firestore.Timestamp.fromDate(new Date()),
-      nombre: inputName,
-      mail: signupEmail,
-      telefono: inputPhone,
-      productos: list,
+      date: firebase.firestore.Timestamp.fromDate(new Date()),
+      name: inputName,
+      email: inputEmail,
+      phone: inputPhone,
+      products: cartContext.list,
     };
     orders
       .add(newOrder)
       .then(({ id }) => {
         setOrderId(id);
-        resetCart();
+        cartContext.resetCart();
       })
       .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        console.log("end");
+        alert(err);
       });
   };
 
@@ -64,7 +58,7 @@ export const Cart = () => {
           <Grid container spacing={3}>
             <Grid item xs={12} m={12} sm={12}>
               <h1 className={classes.title}>Carrito</h1>
-              {list.length === 0 ? (
+              {cartContext.list.length === 0 ? (
                 <div className={classes.emptyCart}>
                   <h2 className={classes.title}>El carrito está vacío</h2>
                   <Link to={"/"}>
@@ -73,50 +67,56 @@ export const Cart = () => {
                 </div>
               ) : (
                 <Grid container spacing={2}>
-                  <Grid item xs={12} m={12} sm={8}>
+                  <Grid item xs={12} sm={12} md={8}>
                     <div className={classes.tableContainer}>
                       <table className={classes.table}>
-                        <tr className={classes.title}>
-                          <th>Producto</th>
-                          <th>Detalle</th>
-                          <th>Cantidad</th>
-                          <th>Precio</th>
-                        </tr>
-
-                        {list.map((element, i) => (
-                          <tr key={i}>
-                            <td>
-                              <img
-                                className={classes.img}
-                                src={element.productImg}
-                                alt="imagen de producto"
-                              ></img>
-                            </td>
-                            <td>{element.name}</td>
-                            <td>{element.count}</td>
-                            <td>$ {element.price}</td>
-                            <td>
-                              <Button
-                                className={classes.btnDel}
-                                onClick={() => remove(element.id)}
-                              >
-                                -
-                              </Button>
-                            </td>
+                        <tbody>
+                          <tr className={classes.title}>
+                            <th>Producto</th>
+                            <th>Detalle</th>
+                            <th>Cantidad</th>
+                            <th className={classes.price}>Precio</th>
                           </tr>
-                        ))}
+
+                          {cartContext.list.map((element, i) => (
+                            <tr key={i}>
+                              <td>
+                                <img
+                                  className={classes.img}
+                                  src={element.productImg}
+                                  alt="imagen de producto"
+                                ></img>
+                              </td>
+                              <td>{element.name}</td>
+                              <td>{element.count}</td>
+                              <td>$ {element.price}</td>
+                              <td>
+                                <Button
+                                  className={classes.btnDel}
+                                  onClick={() => remove(element.id)}
+                                >
+                                  -
+                                </Button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
                       </table>
-                      <h2>Total: $ {totalItemPrice}</h2>
+                      <h2>Total: $ {cartContext.totalItemPrice}</h2>
                     </div>
                   </Grid>
-                  <Grid item xs={12} m={5} sm={4} className={classes.form}>
+                  <Grid item xs={12} sm={12} md={4} className={classes.form}>
                     <h1 className={classes.title}>Finalizar compra</h1>
                     <form
                       className={classes.root}
                       noValidate
+                      onSubmit={submitOrder}
                       autoComplete="off"
                     >
-                    <h4>El total de su compra es de $ {totalItemPrice}</h4>
+                      <h4>
+                        El total de su compra es de ${" "}
+                        {cartContext.totalItemPrice}
+                      </h4>
                       <div>
                         <TextField
                           required
@@ -128,9 +128,9 @@ export const Cart = () => {
                         />
                         <TextField
                           required
-                          value={signupEmail}
-                          onChange={(e) => setSignupEmail(e.target.value)}
-                          id="signupEmail"
+                          value={inputEmail}
+                          onChange={(e) => setInputEmail(e.target.value)}
+                          id="inputEmail"
                           label="Email"
                           variant="outlined"
                         />
@@ -146,9 +146,8 @@ export const Cart = () => {
                       <div>
                         <Button
                           className={classes.btnBuy}
-                          onClick={submitOrder}
                           type="submit"
-                          disabled={!inputName || !signupEmail || !inputPhone}
+                          disabled={!inputName || !inputEmail || !inputPhone}
                         >
                           Comprar
                         </Button>
@@ -164,16 +163,19 @@ export const Cart = () => {
     );
   } else {
     return (
-      <>
+      <div className={classes.emptyCart}>
         <Container>
           <Grid container spacing={3}>
-            <Grid xs={12} m={12} sm={12}>
+            <Grid item xs={12} m={12} sm={12}>
               <h1>¡Su compra ha sido realizada con éxito!</h1>
-              <h3>Su número de orden es {orderId}</h3>
+              <h3>Su código de orden es {orderId}</h3>
+              <Link to={"/"}>
+                <h3 className={classes.title}>Volver al inicio</h3>
+              </Link>
             </Grid>
           </Grid>
         </Container>
-      </>
+      </div>
     );
   }
 };

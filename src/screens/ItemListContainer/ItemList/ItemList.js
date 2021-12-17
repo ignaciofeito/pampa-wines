@@ -18,7 +18,7 @@ export const ItemList = ({ dataToShow }) => {
         <div className={classes.root}>
           <Container>
             <Grid container>
-              <Grid xs={12} sm={6} md={10}>
+              <Grid item xs={12} sm={6} md={10}>
                 <h4 className={classes.title}>
                   Mostrando {dataToShow.length} productos
                 </h4>

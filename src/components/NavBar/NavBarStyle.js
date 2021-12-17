@@ -50,12 +50,12 @@ export const NavBarStyle = theme => {
         },
         listSmallScreen: {
             display: 'flex',
-            [theme.breakpoints.up('sm')]: {
+            [theme.breakpoints.up('md')]: {
                 display: 'none',
             }
         },
         listFullScreen: {
-            [theme.breakpoints.down('xs')]: {
+            [theme.breakpoints.down('sm')]: {
                 display: 'none',
             }
         },

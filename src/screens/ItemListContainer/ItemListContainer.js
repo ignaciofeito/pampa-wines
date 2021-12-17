@@ -21,7 +21,6 @@ export const ItemListContainer = () => {
     const db = getFirestore();
     const itemCollection = db.collection("productos");
 
-    // En caso de que la barra de búsqueda se encuentre vacía, se renderizan todos los productos de itemCollection
     if (searchInput === "") {
       if (categoryId === undefined) {
         itemCollection.get().then((response) => {
@@ -32,8 +31,8 @@ export const ItemListContainer = () => {
           setDataToShow(aux);
         });
       } else if (categoryId !== undefined && subcategoryId === undefined) {
-        var dataFiltrada = itemCollection.where("categoryId", "==", categoryId);
-        dataFiltrada.get().then((response) => {
+        let filteredCollection = itemCollection.where("categoryId", "==", categoryId);
+        filteredCollection.get().then((response) => {
 
           const aux = response.docs.map((element) => {
             return { ...element.data(), id: element.id };
@@ -41,13 +40,13 @@ export const ItemListContainer = () => {
           setDataToShow(aux);
         });
       } else if (subcategoryId !== undefined) {
-        var dataFiltrada = itemCollection.where(
+        let filteredCollection = itemCollection.where(
           "subcategoryId",
           "==",
           subcategoryId
         );
 
-        dataFiltrada.get().then((response) => {
+        filteredCollection.get().then((response) => {
 
           const aux = response.docs.map((element) => {
             return { ...element.data(), id: element.id };
@@ -62,10 +61,10 @@ export const ItemListContainer = () => {
           return { ...element.data(), id: element.id };
         });
 
-        var dataFiltrada = aux.filter((item) =>
+        let filteredCollection = aux.filter((item) =>
           item.name.toLowerCase().includes(searchInput.toLowerCase())
         );
-        setDataToShow(dataFiltrada);
+        setDataToShow(filteredCollection);
       });
     }
   }, [categoryId, subcategoryId, searchInput]);
@@ -75,7 +74,7 @@ export const ItemListContainer = () => {
   return (
     <Container>
       <Grid container columns={16}>
-        <Grid xs={12} m={12} sm={9}>
+        <Grid item xs={12} m={12} sm={9}>
           <h4>
             <Link className={classes.title} to={"/"}>
               PRODUCTOS
@@ -103,7 +102,7 @@ export const ItemListContainer = () => {
             ) : null}
           </h4>
         </Grid>
-        <Grid xs={12} m={12} sm={3}>
+        <Grid item xs={12} m={12} sm={3}>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -121,11 +120,11 @@ export const ItemListContainer = () => {
         </Grid>
       </Grid>
       <Grid container>
-        <Grid xs={12} m={12} sm={2}>
+        <Grid item xs={12} m={12} sm={2}>
           <CategoryList />
         </Grid>
 
-        <Grid xs={12} m={12} sm={10}>
+        <Grid item xs={12} m={12} sm={10}>
           <ItemList dataToShow={dataToShow} />
         </Grid>
       </Grid>
