@@ -1,82 +1,133 @@
-import React, { useState, useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import { ItemDetailStyle } from './ItemDetailStyle';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import { CartContext } from '../../../screens/Cart/CartContext'
+import React, { useState, useContext } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import { ItemDetailStyle } from "./ItemDetailStyle";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import { CartContext } from "../../../screens/Cart/CartContext";
 
-const useStyles = makeStyles((theme) => ItemDetailStyle(theme))
+const useStyles = makeStyles((theme) => ItemDetailStyle(theme));
 
-export const ItemDetail = ({ dataToShow }) => {
+export const ItemDetail = ({ itemDetails }) => {
+  const classes = useStyles();
 
-    const classes = useStyles();
+  const [productAdded, setProductAdded] = useState(false);
+  const [count, setCount] = useState(1);
+  const { productsAdd } = useContext(CartContext);
+  const { productsRemove } = useContext(CartContext);
 
-    const [clicked, setClicked] = useState(false);
-    const [count, setCount] = useState(1);
-    const { productsAdd } = useContext(CartContext);
-    const { productsRemove } = useContext(CartContext);
+  const add = () => {
+    setCount(count + 1);
+  };
 
-    const add = () => {
-        setCount(count + 1);
-    }
+  const subtract = () => {
+    setCount(count - 1);
+  };
 
-    const subtract = () => {
-        setCount(count - 1);
-    }
+  const addItem = () => {
+    productsAdd({
+      id: itemDetails.id,
+      name: itemDetails.name,
+      productImg: itemDetails.productImg,
+      price: itemDetails.price,
+      stock: itemDetails.stock,
+      count,
+    });
+    setProductAdded(true);
+  };
 
-    const addItem = () => {
-        productsAdd({ id: dataToShow.id, name: dataToShow.name, productImg: dataToShow.productImg, price:dataToShow.price, stock: dataToShow.stock,count });
-        setClicked(true);
-    }
+  const end = () => {
+    setProductAdded(true);
+  };
 
-    const end = () => {
-        setClicked(true);
-    }
+  const cancel = () => {
+    productsRemove({ id: itemDetails.id });
+    setProductAdded(false);
+  };
 
-    function cancel() {
-        productsRemove({id:dataToShow.id})
-        setClicked(false);
-    }
-
-    return <>
-        {dataToShow === undefined ? (<h1>Cargando...</h1>) : (<div className={classes.root}>
-            <Grid container spacing={3}>
-                <Grid className={classes.imgContainer} item xs={12} sm={6}>
-                    <img className={classes.image} alt={dataToShow.name} src={dataToShow.productImg}></img>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <div className={classes.info}>
-                        <div><h1 className={classes.title}>{dataToShow.name}</h1></div>
-                        <hr></hr>
-                        <div><h2>$ {dataToShow.price}</h2></div>
-                        <div>{clicked ? null : <div className={classes.contenedor}><Button disabled={count === 0} onClick={subtract} className={classes.button}>-</Button><h3>{count}</h3><Button disabled={count === dataToShow.stock} onClick={add} className={classes.button}>+</Button></div>}</div>
-                        <div>{clicked ? null : <div className={classes.contenedor}>
-                            <Button disabled={count === 0} onClick={addItem} className={classes.button}>
-                                <h4>Añadir al carrito</h4>
-                            </Button></div>}
-                        </div>
-                        <div>
-                            <div className={classes.contenedor}>
-                                {clicked ? <Link className={classes.link} to={"/cart"}><Button onClick={end} className={classes.button}>
-                                    <h4>FINALIZAR COMPRA</h4>
-                                </Button></Link> : null}
-                            </div>
-                            <div className={classes.contenedor}>
-                                {clicked ? <Button onClick={cancel} className={classes.button}>
-                                    <h4>Cancelar</h4>
-                                </Button> : null}
-                            </div>
-                            <div className={classes.contenedor}>
-                                {clicked ? <Link className={classes.link} to={"/"}>
-                                    <h3>Seguir comprando</h3>
-                                </Link> : null}
-                            </div>
-                        </div>
-
-                    </div>
-                </Grid>
+  return (
+    <>
+      {itemDetails === undefined ? (
+        <h1>Cargando...</h1>
+      ) : (
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+            <Grid className={classes.imgContainer} item xs={12} sm={6}>
+              <img
+                className={classes.image}
+                alt={itemDetails.name}
+                src={itemDetails.productImg}
+              ></img>
             </Grid>
-        </div>)}
+            <Grid item xs={12} sm={6}>
+              <div className={classes.info}>
+                <div>
+                  <h1 className={classes.title}>{itemDetails.name}</h1>
+                </div>
+                <hr></hr>
+                <div>
+                  <h2>$ {itemDetails.price}</h2>
+                </div>
+                {productAdded ? null : (
+                  <>
+                    <div>
+                      <div className={classes.contenedor}>
+                        <Button
+                          disabled={count === 0}
+                          onClick={subtract}
+                          className={classes.button}
+                        >
+                          -
+                        </Button>
+                        <h3>{count}</h3>
+                        <Button
+                          disabled={count === itemDetails.stock}
+                          onClick={add}
+                          className={classes.button}
+                        >
+                          +
+                        </Button>
+                      </div>
+                    </div>
+                    <div>
+                      <div className={classes.contenedor}>
+                        <Button
+                          disabled={count === 0}
+                          onClick={addItem}
+                          className={classes.button}
+                        >
+                          <h4>Añadir al carrito</h4>
+                        </Button>
+                      </div>
+                    </div>
+                  </>
+                )}
+                {productAdded ? (
+                  <div>
+                    <div className={classes.contenedor}>
+                      <Link className={classes.link} to={"/cart"}>
+                        <Button onClick={end} className={classes.button}>
+                          <h4>FINALIZAR COMPRA</h4>
+                        </Button>
+                      </Link>
+                    </div>
+                    <div className={classes.contenedor}>
+                      <Button onClick={cancel} className={classes.button}>
+                        <h4>Cancelar</h4>
+                      </Button>
+                    </div>
+                    <div className={classes.contenedor}>
+                      <Link className={classes.link} to={"/"}>
+                        <h3>Seguir comprando</h3>
+                      </Link>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </Grid>
+          </Grid>
+        </div>
+      )}
     </>
-}
+  );
+};

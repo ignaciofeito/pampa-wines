@@ -6,7 +6,7 @@ import { getFirestore } from "../../services/Firebase/firebase";
 
 export const ItemDetailContainer = () => {
   const { ID } = useParams();
-  const [dataToShow, setDataToShow] = useState();
+  const [itemDetails, setItemDetails] = useState();
 
   const db = getFirestore();
   const itemCollection = db.collection("productos");
@@ -17,12 +17,12 @@ export const ItemDetailContainer = () => {
     if (!doc.exists) {
       console.log("no results");
     }
-    setDataToShow({ id: doc.id, ...doc.data() });
+    setItemDetails({ id: doc.id, ...doc.data() });
   });
 
   return (
     <Container>
-      <ItemDetail dataToShow={dataToShow} />
+      <ItemDetail itemDetails={itemDetails} />
     </Container>
   );
 };

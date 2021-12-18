@@ -9,7 +9,7 @@ export const CartStyle = (theme) => {
         width: "25ch",
       },
     },
-    emptyCart:{
+    emptyCart: {
       textAlign: "center",
     },
     form: {
@@ -41,8 +41,12 @@ export const CartStyle = (theme) => {
       margin: "auto",
       textAlign: "center",
     },
-    price:{
+    tablePrice: {
       minWidth: "100px",
+    },
+
+    tableCount: {
+      minWidth: "150px",
     },
     btnBuy: {
       backgroundColor: "lightgray",
@@ -55,14 +59,13 @@ export const CartStyle = (theme) => {
       minHeight: "40px",
       width: "25ch",
     },
-    btnDel: {
+    btnCount: {
       textDecoration: "none",
       fontSize: "16px",
-      color: "darkred",
       fontWeight: "bold",
     },
     successfulOrderContainer: {
       textAlign: "center",
-    }
+    },
   };
 };

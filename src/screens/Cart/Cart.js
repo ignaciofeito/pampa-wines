@@ -29,6 +29,10 @@ export const Cart = () => {
     cartContext.productsRemove(removeId);
   };
 
+  const addInCart = (addId) => {
+    cartContext.addInCart(addId);
+  };
+
   const submitOrder = (e) => {
     e.preventDefault();
 
@@ -74,8 +78,8 @@ export const Cart = () => {
                           <tr className={classes.title}>
                             <th>Producto</th>
                             <th>Detalle</th>
-                            <th>Cantidad</th>
-                            <th className={classes.price}>Precio</th>
+                            <th className={classes.tableCount}>Cantidad</th>
+                            <th className={classes.tablePrice}>Precio</th>
                           </tr>
 
                           {cartContext.list.map((element, i) => (
@@ -88,16 +92,22 @@ export const Cart = () => {
                                 ></img>
                               </td>
                               <td>{element.name}</td>
-                              <td>{element.count}</td>
-                              <td>$ {element.price}</td>
                               <td>
                                 <Button
-                                  className={classes.btnDel}
+                                  className={classes.btnCount}
                                   onClick={() => remove(element.id)}
                                 >
                                   -
                                 </Button>
+                                {element.count}
+                                <Button
+                                  className={classes.btnCount}
+                                  onClick={() => addInCart(element.id)}
+                                >
+                                  +
+                                </Button>
                               </td>
+                              <td>$ {element.price}</td>
                             </tr>
                           ))}
                         </tbody>
