@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppBar, Grid, makeStyles, IconButton, Menu, MenuItem } from "@material-ui/core";
 import { CartWidget } from "./CartWidget/CartWidget";
-import logo from "../../img/logo2.png";
+import logo from "../../assets/logo.png";
 import MenuIcon from "@material-ui/icons/Menu";
 import { NavLink, Link } from "react-router-dom";
 import { NavBarStyle } from "./NavBarStyle";

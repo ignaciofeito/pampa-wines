@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import logo from "../../img/logo2.png";
+import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { FooterStyle } from "./FooterStyle";
 
